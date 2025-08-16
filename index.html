@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Proyectos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-card {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .filter-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .tech-tag {
+            transition: all 0.2s ease;
+        }
+        .tech-tag:hover {
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-blue-600">DevPortfolio</h1>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Inicio</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Proyectos</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Sobre mí</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Contacto</a>
+                </nav>
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Mis Proyectos de Programación</h2>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Explora mi colección de proyectos desarrollados con diversas tecnologías y frameworks.</p>
+            <div class="flex justify-center space-x-4">
+                <button class="bg-white text-blue-600 px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition">Contactar</button>
+                <button class="border-2 border-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-blue-600 transition">Saber más</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-16 container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Explora Mis Proyectos</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Desde aplicaciones web hasta móviles, cada proyecto representa un desafío superado y habilidades adquiridas.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="filter-btn active px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-medium" data-filter="all">Todos</button>
+            <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium" data-filter="web">Web</button>
+            <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium" data-filter="mobile">Móvil</button>
+            <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium" data-filter="javascript">JavaScript</button>
+            <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium" data-filter="python">Python</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+            <!-- Projects will be loaded here by JavaScript -->
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-12">
+            <button id="load-more" class="bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition">Cargar más proyectos</button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">42</div>
+                    <div class="text-gray-600">Proyectos completados</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">15</div>
+                    <div class="text-gray-600">Clientes satisfechos</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">8</div>
+                    <div class="text-gray-600">Años de experiencia</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">12</div>
+                    <div class="text-gray-600">Tecnologías dominadas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">DevPortfolio</h3>
+                    <p class="text-gray-400">Mostrando mi pasión por el código a través de proyectos innovadores y soluciones creativas.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Inicio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Proyectos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Sobre mí</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tecnologías</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-700 text-sm px-3 py-1 rounded-full">JavaScript</span>
+                        <span class="bg-gray-700 text-sm px-3 py-1 rounded-full">React</span>
+                        <span class="bg-gray-700 text-sm px-3 py-1 rounded-full">Node.js</span>
+                        <span class="bg-gray-700 text-sm px-3 py-1 rounded-full">Python</span>
+                        <span class="bg-gray-700 text-sm px-3 py-1 rounded-full">Django</span>
+                        <span class="bg-gray-700 text-sm px-3 py-1 rounded-full">Flutter</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center"><i class="fas fa-envelope mr-2"></i> contacto@devportfolio.com</li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-2"></i> +1 234 567 890</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Ciudad, País</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 DevPortfolio. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample project data
+        const projects = [
+            {
+                id: 1,
+                title: "E-commerce React",
+                description: "Plataforma de comercio electrónico construida con React, Node.js y MongoDB. Incluye carrito de compras, autenticación y pasarela de pagos.",
+                image: "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                tags: ["web", "javascript"],
+                technologies: ["React", "Node.js", "MongoDB"],
+                link: "#",
+                year: 2023
+            },
+            {
+                id: 2,
+                title: "App de Tareas Flutter",
+                description: "Aplicación móvil para gestión de tareas con recordatorios y categorías. Sincronización en la nube y multiplataforma.",
+                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                tags: ["mobile", "javascript"],
+                technologies: ["Flutter", "Firebase"],
+                link: "#",
+                year: 2022
+            },
+            {
+                id: 3,
+                title: "API REST con Django",
+                description: "API robusta para sistema de gestión de contenidos con autenticación JWT, documentación Swagger y tests automatizados.",
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                tags: ["web", "python"],
+                technologies: ["Django", "Django REST", "PostgreSQL"],
+                link: "#",
+                year: 2023
+            },
+            {
+                id: 4,
+                title: "Dashboard Analytics",
+                description: "Panel de control interactivo para visualización de datos con gráficos personalizados y filtros avanzados.",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
+                tags: ["web", "javascript"],
+                technologies: ["React", "Chart.js", "Express"],
+                link: "#",
+                year: 2022
+            },
+            {
+                id: 5,
+                title: "Juego de Memoria",
+                description: "Juego interactivo de memoria con niveles progresivos y sistema de puntuación. Diseño responsive y animaciones fluidas.",
+                image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                tags: ["web", "javascript"],
+                technologies: ["JavaScript", "CSS3", "HTML5"],
+                link: "#",
+                year: 2021
+            },
+            {
+                id: 6,
+                title: "Sistema de Recomendación",
+                description: "Algoritmo de recomendación basado en machine learning para sugerir contenido personalizado a usuarios.",
+                image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80",
+                tags: ["python"],
+                technologies: ["Python", "Pandas", "Scikit-learn"],
+                link: "#",
+                year: 2023
+            }
+        ];
+
+        // DOM elements
+        const projectsContainer = document.getElementById('projects-container');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const loadMoreBtn = document.getElementById('load-more');
+
+        // Current filter and visible projects count
+        let currentFilter = 'all';
+        let visibleProjects = 6;
+        const projectsPerLoad = 3;
+
+        // Render projects
+        function renderProjects(filter = 'all', count = visibleProjects) {
+            projectsContainer.innerHTML = '';
+            
+            const filteredProjects = filter === 'all' 
+                ? projects 
+                : projects.filter(project => project.tags.includes(filter));
+            
+            const projectsToShow = filteredProjects.slice(0, count);
+            
+            projectsToShow.forEach((project, index) => {
+                const projectElement = document.createElement('div');
+                projectElement.className = `project-card bg-white rounded-lg overflow-hidden shadow-md animate-fade-in`;
+                projectElement.style.animationDelay = `${index * 0.1}s`;
+                
+                projectElement.innerHTML = `
+                    <div class="h-48 overflow-hidden">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">${project.title}</h3>
+                            <span class="text-sm text-gray-500">${project.year}</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">${project.description}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${project.technologies.map(tech => 
+                                `<span class="tech-tag bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full">${tech}</span>`
+                            ).join('')}
+                        </div>
+                        <a href="${project.link}" class="inline-block text-blue-600 font-medium hover:text-blue-800 transition">
+                            Ver proyecto <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                `;
+                
+                projectsContainer.appendChild(projectElement);
+            });
+
+            // Show/hide load more button
+            if (filteredProjects.length > count) {
+                loadMoreBtn.style.display = 'inline-block';
+            } else {
+                loadMoreBtn.style.display = 'none';
+            }
+        }
+
+        // Filter projects
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-100', 'text-blue-600'));
+                button.classList.add('active', 'bg-blue-100', 'text-blue-600');
+                
+                // Update filter and render
+                currentFilter = button.dataset.filter;
+                visibleProjects = 6;
+                renderProjects(currentFilter, visibleProjects);
+            });
+        });
+
+        // Load more projects
+        loadMoreBtn.addEventListener('click', () => {
+            visibleProjects += projectsPerLoad;
+            renderProjects(currentFilter, visibleProjects);
+        });
+
+        // Initial render
+        renderProjects();
+    </script>
+</body>
+</html>
